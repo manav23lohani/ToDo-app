@@ -17,27 +17,67 @@ app.post('/todo', (req, res) => {
         sql = 'INSERT INTO todo (todo, status) VALUES (?, ?)';
         db.run(sql, [todo, status], (err) => {
             if (err) {
-                return res.json({ status: 300, success: false, error: err });
+                res.status(500).json({ error: 'Error adding TODO' });
             }
-            console.log("Successfully added", todo, status);
-            return res.json({ status: 200, success: true });
+            res.status(200).json({message: 'Added successfully'});
         });
     } catch (error) {
-        return res.json({ status: 400, success: false });
+        console.error('Error adding TODO:', error);
+        res.status(500).json({ error: 'Error adding TODO' });
     }
 });
 
 
 //get request
 app.get('/todo', (req, res) => {
-    sql = 'SELECT * FROM todo';
-    try{
+    try {
+        sql = 'SELECT * FROM todo';
         db.all(sql, [], (err, rows) => {
-            if(err) return res.json({status: 300, success: false, error: err});
-            return res.json({status:200, data: rows, success: true});
+            if (err) {
+                res.status(500).json({ error: 'Error fetching TODOs' });
+            }
+            res.status(200).json({ data: rows, message: 'Fetched successfully' });
+        });
+    } catch (error) {
+        console.error('Error fetching TODOs:', error);
+        res.status(500).json({ error: 'Error fetching TODOs' });
+    }
+});
+
+
+//update request
+app.put('/todo/:id', (req, res) => {
+    try{
+        const todoId = req.params.id;
+        const { todo, status } = req.body;
+        sql = 'UPDATE todo SET todo = ?, status = ? WHERE ID = ?';
+        db.run(sql, [todo, status, todoId], (err) => {
+            if (err) {
+                res.status(500).json({ error: 'Error updating TODO' });
+            } 
+            res.status(200).json({ message: 'Updated successfully' });
         });
     }catch(err){
-        return res.json({status: 400, success: false});
+        console.error('Error updating TODO:', err);
+        res.status(500).json({ error: 'Error updating TODO' });  
+    }
+});
+
+
+// delete request
+app.delete('/todo/:id', (req, res) => {
+    try{
+        const todoId = req.params.id;
+        sql = 'DELETE FROM todo WHERE ID = ?';
+        db.run(sql, [todoId], (err) => {
+            if (err) {
+                res.status(500).json({ error: 'Error deleting TODO' });
+            } 
+            res.status(200).json({ message: 'Deleted successfully' });
+        });
+    }catch(err){
+        console.error('Error deleting TODO:', err);
+        res.status(500).json({ error: 'Error deleting TODO' });  
     }
 });
 
