@@ -1,0 +1,119 @@
+.todos{
+    position: relative;
+}
+
+.todo{
+    width: 40%;
+    padding: .3rem 1.2rem;
+    background:  rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin: 0 auto 1rem auto;
+    transition: .2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: .2s;
+}
+.todo:hover{
+    /* box-shadow: 3px 3px 0px rgba(226, 226, 226, 0.4); */
+   border: whitesmoke 2px solid;
+}
+.todo-form{
+   display: flex;
+   place-content: center;
+   margin-bottom: 1rem;
+}
+.todo-form input {
+    border: none;
+    width: 300px;
+    border-radius: 8px;
+    padding: .6rem;
+}
+
+.line-through{
+    /* text-decoration: line-through; */
+    opacity: .1;
+}
+.completed-task{
+    position: absolute;
+    width: 100px;
+    transform: translate(10%,0);
+}
+.trash{
+    opacity: .5;
+    width: 15px;
+    height: 15px;
+    padding: .5rem;
+    border-radius: 8px;
+    transition: .2s;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+.trash:hover{
+    opacity: 1;
+    background-color: red;
+    
+}
+
+.edit{
+    opacity: .5;
+    width: 15px;
+    height: 15px;
+    padding: .5rem;
+    border-radius: 8px;
+    transition: .2s;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+.edit:hover{
+    opacity: 1;  
+}
+
+.todo-info{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+.todo-info span:nth-child(1){
+    font-size: 10px;
+}
+
+.todo-content{
+    cursor: pointer;
+}
+
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    display: grid;
+    place-content: center;
+    z-index: 999;
+}
+.modal-dialogue{
+    position: relative;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+}
+
+.x{
+    position: absolute;
+    right: 1rem;
+    top: -2rem;
+    cursor: pointer;
+}
+.open{
+    display: block;
+}
+.modal select{
+    padding: .5rem 1rem;
+}

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5001;
+const cors = require('cors');
 let sql;
 const sqlite = require('sqlite3').verbose();
 const db = new sqlite.Database('./todo.db', sqlite.OPEN_READWRITE, (err)=>{
@@ -9,7 +10,7 @@ const db = new sqlite.Database('./todo.db', sqlite.OPEN_READWRITE, (err)=>{
 });
 
 app.use(bodyParser.json());
-
+app.use(cors());
 // post request
 app.post('/todo', (req, res) => {
     try {
