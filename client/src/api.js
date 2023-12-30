@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'https://todo-server-beryl.vercel.app'  
+    baseURL: 'https://todoserver-6vnj.onrender.com'  
 })
