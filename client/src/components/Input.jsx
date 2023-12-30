@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Plus } from 'lucide-react'
 
 function Input({ handleNewTodo, type, item, handleUpdate, status, onClose }) {
     const [newTodo, setNewTodo] = useState(item?.todo)
@@ -27,8 +28,9 @@ function Input({ handleNewTodo, type, item, handleUpdate, status, onClose }) {
 
     return (
         <>
-            <form className='todo-form' onSubmit={handleTodo}>
-                <input type='text' value={newTodo} onChange={(e) => setNewTodo(e.target.value)} style={{marginRight: '1rem'}}/>
+            <form className='taskform' onSubmit={handleTodo}>
+            <Plus />
+                <input type='text' value={newTodo} placeholder= 'task' onChange={(e) => setNewTodo(e.target.value)}/>
                 <button>{type}</button>
             </form>
         </>

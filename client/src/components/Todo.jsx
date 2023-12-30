@@ -15,7 +15,7 @@ function statusColor(text){
    }
 }
 
-function Todo({item, setUpdatepage, handleUpdate, handleNewTodo}) {
+function Todo({item, setUpdatepage, handleUpdate, handleNewTodo, search}) {
     const [lineThrough, setLineThrough] = useState(false)
     const [modalOpen, setModalOpen] = useState(false) //initial sync with db
 
@@ -36,7 +36,7 @@ function Todo({item, setUpdatepage, handleUpdate, handleNewTodo}) {
     }
 
   return (
-    <div className={`${lineThrough? 'completed-task': ''} todo`}>
+    <div className={`${lineThrough? 'completed-task': ''} todo ${search == item.todo ? 'highlight' : ''}`}>
         <span onClick={handleCompletion} style={{textDecoration:item?.status=='completed'?'line-through': '', opacity:item?.status=='completed'?'.3': '1'}} className={`${lineThrough? 'line-through': ''} todo-content`}>{item?.todo}</span>
         <div className="todo-info">
           <span style={{color: statusColor(item?.status)}}>{item?.status}</span>

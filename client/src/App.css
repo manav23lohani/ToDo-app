@@ -3,7 +3,7 @@
 }
 
 .todo{
-    width: 40%;
+    width: 50%;
     padding: .3rem 1.2rem;
     background:  rgba(0, 0, 0, 0.3);
     border-radius: 8px;
@@ -19,15 +19,12 @@
     /* box-shadow: 3px 3px 0px rgba(226, 226, 226, 0.4); */
    border: whitesmoke 2px solid;
 }
-.todo-form{
-   display: flex;
-   place-content: center;
-   margin-bottom: 1rem;
-}
-.todo-form input {
+
+input {
     border: none;
     width: 300px;
     border-radius: 8px;
+    margin-right:1rem;
     padding: .6rem;
 }
 
@@ -117,3 +114,16 @@
 .modal select{
     padding: .5rem 1rem;
 }
+.taskform{
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+    justify-content: center;
+}
+.highlight {
+    border-color: yellow;
+  }
+  
